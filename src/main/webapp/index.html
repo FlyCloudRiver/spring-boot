@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>springboot+ssm</title>
+    <!--使用Vue框架-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!--使用jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <h1>hello boy!</h1>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <div id="ab"></div>
+
+    <div id="vue_det">
+        <h1>site:{{site}}</h1>
+        <h1>url : {{url}}</h1>
+        <h1>{{details()}}</h1>
+        <h1>Alexa : {{alexa}}</h1>
+    </div>
+
+    <!--使用 v-html 指令用于输出 html 代码：-->
+
+    <!-- JavaScript 代码需要放在尾部（指定的HTML元素之后） -->
+    <script>
+        $(function () {
+            $.ajax({
+                url: "/cs",
+                type: "post",
+                dataType: "json",
+                success: function (successData) {
+                  /*  $.each(successData,function (i,n) {
+                   html= "<table><tr><td>"+n.user_name+"</td></tr></table>"
+                    })*/
+                  console.log("successData  "+successData);
+                    html= "<table><tr><td>"+successData+"</td></tr></table>"
+                    $("#ab").html(html)
+                },
+                error: function (e) {
+                }
+            });
+        })
+        /*开始Vue*/
+        new Vue({
+            el:'#app',
+            data: {
+                message:'这是Vue message 的内容 Hello World!'
+            }
+        });
+
+        var data = { site: "自学Vue", url: "www.runoob.com", alexa: 10000}
+        var vm = new Vue({
+            el: '#vue_det',
+            /*data: {
+                site: "菜鸟教程",
+                url: "www.runoob.com",
+                alexa: "100"
+            },*/
+            data:data,
+            methods: {
+                details: function() {
+                    return  this.site + " - 学的不仅是技术，更是梦想！";
+                }
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>
