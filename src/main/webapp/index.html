@@ -24,7 +24,16 @@
         <h1>Alexa : {{alexa}}</h1>
     </div>
 
-    <!--使用 v-html 指令用于输出 html 代码：-->
+    <!--实例中演示了 input 和 textarea 元素中使用 v-model 实现双向数据绑定-->
+    <div id="app2">
+        <p>input 元素：</p>
+        <input v-model="message" placeholder="编辑我……">
+        <p>消息是: {{ message }}</p>
+
+        <p>textarea 元素：</p>
+        <p style="white-space: pre">{{ message2 }}</p>
+        <textarea v-model="message2" placeholder="多行文本输入……"></textarea>
+    </div>
 
     <!-- JavaScript 代码需要放在尾部（指定的HTML元素之后） -->
     <script>
@@ -69,6 +78,14 @@
             }
         })
 
+        /*实例中演示了 input 和 textarea 元素中使用 v-model 实现双向数据绑定*/
+      var vm2=  new Vue({
+            el: '#app2',
+            data: {
+                message: 'Runoob',
+                message2: '菜鸟教程\r\nhttp://www.runoob.com'
+            }
+        })
 
 
     </script>

@@ -15,4 +15,7 @@
         SELECT * FROM user WHERE user_id = #{user_id}
     </select>
 
+    <select id="find" resultType="User">
+        select * from user where user_name=#{name} and user_password=#{password}
+    </select>
 </mapper>
