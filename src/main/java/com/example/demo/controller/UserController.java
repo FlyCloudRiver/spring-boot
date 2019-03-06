@@ -52,44 +52,14 @@ public class UserController {
         System.out.println(user);
         return user;
     }
-}
 
 
-
-
-   /* *//*指向页面的写法*//*
+    /* 指向页面的写法*//*
     @GetMapping(value = "index.do")
     public ModelAndView index2() {
         return new ModelAndView("login"); // 此处指向界面
-    }
-
-    *//*登录*//*
-    @RequestMapping(value = "/login.do",method = RequestMethod.GET)
-    public Object login(String name, String password) {
-        System.out.println("传入参数：name=" + name + ", password=" + password);
-        if (name.isEmpty()) {
-            return "name不能为空";
-        } else if (password.isEmpty()) {
-            return "password不能为空";
-        }
-        User user = userService.find(name, password);
-        if (user != null) {
-            return user;
-        } else {
-            return "用户名或密码错误";
-        }
-
-
-}
-    *//*测试*//*
-    @RequestMapping(value = "/cs",method = RequestMethod.POST)
-    public User cs() {
-        //调用service层
-        User user = userService.selectUserById(17);
-        System.out.println(user);
-        return user;
     }*/
-
+}
 
 
 
