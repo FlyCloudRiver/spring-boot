@@ -26,31 +26,29 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    /*swagger  测试*/
-    static Map<Long, User> map = new ConcurrentHashMap<>();
 
     /*登录*/
     @ApiOperation(value = "登录")
     @RequestMapping(value = "/login.do", method = RequestMethod.GET)
     public Object login(String name, String password) {
         System.out.println("传入参数：name=" + name + ", password=" + password);
-        User user = userService.find(name, password);
+        User user = userService.login(name, password);
         System.out.println(user);
         return user;
     }
 
     @ApiOperation(value = "获取用户列表")
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectAll", method = RequestMethod.GET)
     public List<User> getList() {
-        List<User> list = new ArrayList<>(map.values());
+        List<User> list = userService.findALl();
         return list;
     }
 
-    @ApiOperation(value = "获取用id为17的用户")
+    @ApiOperation(value = "根据ID查询用户")
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public User cs() {
+    public User selectUserById(Integer userId) {
         //调用service层
-        User user = userService.selectUserById(17);
+        User user = userService.selectUserById(userId);
         System.out.println(user);
         return user;
     }

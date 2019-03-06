@@ -2,10 +2,15 @@ package com.example.demo.service;
 
 import com.example.demo.entity.User;
 
+import java.util.List;
+
 public interface UserService {
-    /*测试*/
+    /*根据ID查询用户*/
     User selectUserById(Integer userId);
 
     /*登录*/
-    User find(String name, String password);
+    User login(String name, String password);
+
+    /*获取所有用户*/
+    List<User> findALl();
 }
