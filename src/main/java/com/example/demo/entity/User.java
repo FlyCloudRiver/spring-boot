@@ -1,47 +1,53 @@
 package com.example.demo.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private Integer user_id;
-    private String user_name;
-    private Integer user_age;
-    private String user_password;
+    @ApiModelProperty(value = "用户ID",example = "123")
+    private Integer userId;
+    @ApiModelProperty(value = "用户名字",example = "小明")
+    private String userName;
+    @ApiModelProperty(value = "用户年龄",example = "23")
+    private Integer userAge;
+    @ApiModelProperty(value = "用户密码",example = "123456")
+    private String userPassword;
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Integer getUser_age() {
-        return user_age;
+    public Integer getUserAge() {
+        return userAge;
     }
 
-    public void setUser_age(Integer user_age) {
-        this.user_age = user_age;
+    public void setUserAge(Integer userAge) {
+        this.userAge = userAge;
     }
 
-    public String getUser_password() {
-        return user_password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     @Override
     public String toString() {
-        return "User{" + "user_id=" + user_id + ", user_name='" + user_name + '\'' + ", user_age=" + user_age + ", user_password=" + user_password + '}';
+        return "User{" + "userId=" + userId + ", userName='" + userName + '\'' + ", userAge=" + userAge + ", userPassword='" + userPassword + '\'' + '}';
     }
 }
