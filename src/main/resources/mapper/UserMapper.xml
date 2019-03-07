@@ -11,6 +11,7 @@
         <!--非主键用<reslut>标签，表示把表中的name字段映射到实体类User的user_name属性-->
         <result column="user_name" property="userName"/>
         <result column="user_age" property="userAge"/>
+        <result column="user_password" property="userPassword"/>
     </resultMap>
 
     <select id="selectUserById"  resultMap="userMapper" parameterType="Integer">
@@ -23,4 +24,10 @@
     <select id="findAll" resultMap="userMapper">
         select * from user
     </select>
+
+    <!--/*根据姓名查询用户（模糊查询）*/-->
+    <select id="selectUserByName" parameterType="String" resultMap="userMapper">
+        select * from user where user_name like #{user_name}
+    </select>
+
 </mapper>

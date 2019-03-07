@@ -13,4 +13,7 @@ public interface UserService {
 
     /*获取所有用户*/
     List<User> findALl();
+
+    /*根据姓名查询用户（模糊查询）*/
+    List<User> selectUserByName(String userName);
 }

@@ -16,4 +16,7 @@ public interface UserMapper {
 
    List<User> findAll();
 
+    /*根据姓名查询用户（模糊查询）*/
+    List<User> selectUserByName(String userName);
+
 }

@@ -31,4 +31,11 @@ public class UserServiceImpl implements UserService {
     public List<User> findALl() {
         return userMapper.findAll();
     }
+
+    /*根据姓名查询用户（模糊查询）*/
+    @Override
+    public List<User> selectUserByName(String userName) {
+        userName="%"+userName+"%";
+        return userMapper.selectUserByName(userName);
+    }
 }
