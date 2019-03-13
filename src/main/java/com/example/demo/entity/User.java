@@ -5,11 +5,11 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    @ApiModelProperty(value = "用户ID",example = "123")
+    @ApiModelProperty(value = "用户ID",example = "1")
     private Integer userId;
     @ApiModelProperty(value = "用户名字",example = "小明")
     private String userName;
-    @ApiModelProperty(value = "用户年龄",example = "23")
+    @ApiModelProperty(value = "用户年龄",example = "18")
     private Integer userAge;
     @ApiModelProperty(value = "用户密码",example = "123456")
     private String userPassword;

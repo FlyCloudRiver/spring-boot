@@ -19,4 +19,12 @@ public interface UserMapper {
     /*根据姓名查询用户（模糊查询）*/
     List<User> selectUserByName(String userName);
 
+    /*更改用户信息*/
+    Integer updateUser(User user);
+
+    /*添加用户*/
+    Integer addUser(User user);
+
+    /*删除用户*/
+    Integer deletUser(Integer userId);
 }

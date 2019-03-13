@@ -14,13 +14,16 @@
         <result column="user_password" property="userPassword"/>
     </resultMap>
 
+    <!--根据ID查找用户-->
     <select id="selectUserById"  resultMap="userMapper" parameterType="Integer">
         SELECT * FROM user WHERE user_id = #{userId}
     </select>
 
+    <!--登录-->
     <select id="login" resultMap="userMapper">
         select * from user where user_name=#{name} and user_password=#{password}
     </select>
+    <!--查询所有用户信息-->
     <select id="findAll" resultMap="userMapper">
         select * from user
     </select>
@@ -30,4 +33,56 @@
         select * from user where user_name like #{user_name}
     </select>
 
+    <!--跟新用户-->
+    <update id="updateUser" parameterType="com.example.demo.entity.User">
+        UPDATE user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null and userName!=''">
+                user_name=#{userName},
+            </if>
+            <if test="userAge!=null">
+                user_age=#{userAge},
+            </if>
+            <if test="userPassword!=null and userPassword!=''">
+                user_password=#{userPassword},
+            </if>
+
+        </trim>
+        WHERE user_id=#{userId}
+    </update>
+
+    <!--添加用户-->
+    <insert id="addUser" parameterType="com.example.demo.entity.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null and userName!=''">
+                user_name,
+            </if>
+
+            <if test="userAge != null and userAge!=''">
+                user_age,
+            </if>
+
+            <if test="userPassword != null and userPassword!=''">
+                user_password,
+            </if>
+
+        </trim>
+
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">
+                #{userName},
+            </if>
+            <if test="userName != null">
+                #{userAge},
+            </if>
+            <if test="userName != null">
+                #{userPassword},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deletUser" parameterType="Integer">
+        delete from user where user_id = #{userId}
+    </delete>
 </mapper>

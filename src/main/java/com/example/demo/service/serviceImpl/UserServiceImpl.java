@@ -14,10 +14,10 @@ public class UserServiceImpl implements UserService {
     //依赖注入
     @Autowired
     private UserMapper userMapper;
-/*测试*/
+    /*根据ID查询用户*/
     @Override
     public User selectUserById(Integer userId) {
-        User user = userMapper.selectUserById(17);
+        User user = userMapper.selectUserById(userId);
         return user;
     }
 
@@ -37,5 +37,23 @@ public class UserServiceImpl implements UserService {
     public List<User> selectUserByName(String userName) {
         userName="%"+userName+"%";
         return userMapper.selectUserByName(userName);
+    }
+
+    /*修改用户信息*/
+    @Override
+    public Integer updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    /*添加用户*/
+    @Override
+    public Integer addUser(User user) {
+        return userMapper.addUser(user);
+    }
+
+    /*删除用户*/
+    @Override
+    public Integer deletUser(Integer userId) {
+        return userMapper.deletUser(userId);
     }
 }
