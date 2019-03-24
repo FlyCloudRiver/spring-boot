@@ -12,6 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement//开启事务管理
 @EnableSwagger2             //启动swagger注解
 
+
 public class DemoApplication {
 
     public static void main(String[] args) {

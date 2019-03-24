@@ -11,11 +11,9 @@ public interface UserService {
     /*登录*/
     User login(String name, String password);
 
-    /*获取所有用户*/
-    List<User> findALl(Integer pageSize,Integer pageNumber);
 
     /*根据姓名查询用户（模糊查询）*/
-    List<User> selectUserByName(String userName);
+    List<User> selectUserByName(String userName,Integer pageSize,Integer pageNumber);
 
     /*修改用户信息*/
     Integer updateUser(User user);
@@ -25,4 +23,6 @@ public interface UserService {
 
     /*删除用户*/
     Integer deletUser(Integer userId);
+
+    Integer selectUserCount();
 }

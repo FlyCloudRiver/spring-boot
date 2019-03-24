@@ -27,18 +27,15 @@ public class UserServiceImpl implements UserService {
         return userMapper.login(name,password);
     }
 
-    @Override
-    public List<User> findALl(Integer pageSize,Integer pageNumber) {
-        int a=pageSize*(pageNumber-1);
-        int b=pageSize;
-        return userMapper.findAll(a,b);
-    }
 
     /*根据姓名查询用户（模糊查询）*/
     @Override
-    public List<User> selectUserByName(String userName) {
-        userName="%"+userName+"%";
-        return userMapper.selectUserByName(userName);
+    public List<User> selectUserByName(String userName,Integer pageSize,Integer pageNumber) {
+        int start=pageSize*(pageNumber-1);
+        int size=pageSize;
+       /* userName="%"+userName+"%";*/
+        System.out.println("userName="+userName);
+        return userMapper.selectUserByName(userName,start,size);
     }
 
     /*修改用户信息*/
@@ -57,5 +54,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer deletUser(Integer userId) {
         return userMapper.deletUser(userId);
+    }
+
+    @Override
+    public Integer selectUserCount() {
+        return userMapper.selectUserCount();
     }
 }
