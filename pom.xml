@@ -63,10 +63,26 @@
             <version>1.1.1</version>
         </dependency>
 
+        <!-- springBoot JPA的依赖 -->
+         <dependency>
+             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+
 
     </dependencies>
 
     <build>
+        <!--包含mapper xml文件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

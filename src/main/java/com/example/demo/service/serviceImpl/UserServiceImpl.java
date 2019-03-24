@@ -28,8 +28,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findALl() {
-        return userMapper.findAll();
+    public List<User> findALl(Integer pageSize,Integer pageNumber) {
+        int a=pageSize*(pageNumber-1);
+        int b=pageSize;
+        return userMapper.findAll(a,b);
     }
 
     /*根据姓名查询用户（模糊查询）*/

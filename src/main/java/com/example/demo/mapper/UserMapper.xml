@@ -7,7 +7,7 @@
     <!-- column：主键在数据库中的列名 -->
     <resultMap id="userMapper" type="com.example.demo.entity.User">
         <!--主键用<id>标签，表示把表中的id字段映射到实体类User中的user_id属性-->
-        <id column="user_id" property="userId"/>
+        <id column="id" property="id"/>
         <!--非主键用<reslut>标签，表示把表中的name字段映射到实体类User的user_name属性-->
         <result column="user_name" property="userName"/>
         <result column="user_age" property="userAge"/>
@@ -16,7 +16,7 @@
 
     <!--根据ID查找用户-->
     <select id="selectUserById"  resultMap="userMapper" parameterType="Integer">
-        SELECT * FROM user WHERE user_id = #{userId}
+        SELECT * FROM user WHERE id = #{id}
     </select>
 
     <!--登录-->
@@ -25,7 +25,7 @@
     </select>
     <!--查询所有用户信息-->
     <select id="findAll" resultMap="userMapper">
-        select * from user
+        select * from user limit #{start},#{size}
     </select>
 
     <!--/*根据姓名查询用户（模糊查询）*/-->
@@ -48,7 +48,7 @@
             </if>
 
         </trim>
-        WHERE user_id=#{userId}
+        WHERE id=#{id}
     </update>
 
     <!--添加用户-->
@@ -83,6 +83,6 @@
     </insert>
 
     <delete id="deletUser" parameterType="Integer">
-        delete from user where user_id = #{userId}
+        delete from user where id = #{id}
     </delete>
 </mapper>

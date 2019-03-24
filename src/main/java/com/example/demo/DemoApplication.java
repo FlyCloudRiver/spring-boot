@@ -12,8 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement//开启事务管理
 @EnableSwagger2             //启动swagger注解
 
-@MapperScan("com.example.demo.mapper")//与mapper层的@Mapper二选一写上即可(主要作用是扫包)
-
 public class DemoApplication {
 
     public static void main(String[] args) {

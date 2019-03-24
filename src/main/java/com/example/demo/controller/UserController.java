@@ -23,8 +23,10 @@ public class UserController {
 
     @ApiOperation(value = "获取所有用户")
     @RequestMapping(value = "/selectAllUser", method = RequestMethod.GET)
-    public List<User> getList() {
-        List<User> list = userService.findALl();
+    public List<User> getList(Integer pageSize,Integer pageNumber) {
+        int a=pageSize*(pageNumber-1);
+        int b=pageSize;
+        List<User> list = userService.findALl(pageSize,pageNumber);
         return list;
     }
 
