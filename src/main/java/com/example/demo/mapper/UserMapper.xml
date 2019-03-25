@@ -82,10 +82,10 @@
             <if test="userName != null">
                 #{userName},
             </if>
-            <if test="userName != null">
+            <if test="userAge != null">
                 #{userAge},
             </if>
-            <if test="userName != null">
+            <if test="userPassword != null">
                 #{userPassword},
             </if>
         </trim>
