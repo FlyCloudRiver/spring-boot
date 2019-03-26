@@ -44,15 +44,8 @@ public class Supplier implements Serializable {
     @OneToMany(mappedBy = "supplier",cascade=CascadeType.ALL,fetch= FetchType.LAZY)
     private List<Goods> goodsList;
 
-    private Integer supplierId;
 
-    public Integer getSupplierId() {
-        return supplierId;
-    }
 
-    public void setSupplierId(Integer supplierId) {
-        this.supplierId = supplierId;
-    }
 
     public Integer getId() {
         return id;

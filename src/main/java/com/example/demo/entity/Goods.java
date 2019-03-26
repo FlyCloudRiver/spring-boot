@@ -49,9 +49,20 @@ public class Goods implements Serializable {
     private Date goodsDate;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
-    @JoinColumn(name="supplier_id")//设置在Goods表中的关联字段(外键)
     @ApiModelProperty(value = "商品所属厂商")
     private  Supplier supplier;
+
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
+    @ApiModelProperty(value = "商品所属类别")
+    private  Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public Integer getId() {
         return id;
