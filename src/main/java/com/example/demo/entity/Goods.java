@@ -2,7 +2,7 @@ package com.example.demo.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
+import java.util.Date;
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -46,7 +46,7 @@ public class Goods implements Serializable {
 
     @ApiModelProperty(value = "商品生产日期")
     @Column(name = "goods_date")
-    private  Integer goodsDate;
+    private Date goodsDate;
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
     @JoinColumn(name="supplier_id")//设置在Goods表中的关联字段(外键)
@@ -109,11 +109,11 @@ public class Goods implements Serializable {
         this.goodsShelfLife = goodsShelfLife;
     }
 
-    public Integer getGoodsDate() {
+    public Date getGoodsDate() {
         return goodsDate;
     }
 
-    public void setGoodsDate(Integer goodsDate) {
+    public void setGoodsDate(Date goodsDate) {
         this.goodsDate = goodsDate;
     }
 
