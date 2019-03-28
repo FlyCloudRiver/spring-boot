@@ -23,9 +23,6 @@ public class Category implements Serializable {
     @ApiModelProperty(value = "商品类别ID",example = "1")
     private Integer id;
 
-  /*  @ApiModelProperty(value = "商品类别ID外键",example = "烟酒")
-    @Column(name = "goods_id")
-    private  String goodsId;*/
 
     @ApiModelProperty(value = "商品类别",example = "烟酒")
     @Column(name = "category_name")
@@ -35,6 +32,19 @@ public class Category implements Serializable {
     @ApiModelProperty(value = "商品")
     @OneToMany(mappedBy = "category",cascade=CascadeType.ALL,fetch= FetchType.LAZY)
     private List<Goods> goodsList;
+
+
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)//可选属性optional=false,表示author不能为空。删除文章，不影响用户
+    @ApiModelProperty(value = "父级类别")
+    private  SecondaryCategory secondaryCategory;
+
+    public SecondaryCategory getSecondaryCategory() {
+        return secondaryCategory;
+    }
+
+    public void setSecondaryCategory(SecondaryCategory secondaryCategory) {
+        this.secondaryCategory = secondaryCategory;
+    }
 
     public Integer getId() {
         return id;
