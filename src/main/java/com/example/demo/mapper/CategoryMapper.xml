@@ -8,6 +8,7 @@
         <id column="id" property="id"/>
         <!--非主键用<reslut>标签，表示把表中的name字段映射到实体类User的user_name属性-->
         <result column="category_name" property="categoryName"/>
+        <collection property="goodsList" resultMap="com.example.demo.mapper.GoodsMapper.goodsMap"></collection>
     </resultMap>
     <!--增加类别-->
     <insert id="insertCategory" parameterType="String">

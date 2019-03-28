@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.BigCategoryMapper" >
+
+    <resultMap id="bigCategoryMapper" type="com.example.demo.entity.BigCategory">
+
+        <id column="id" property="id"/>
+        <result column="big_category_name" property="bigCategoryName"/>
+        <collection property="secondaryCategoryList" resultMap="com.example.demo.mapper.SecondaryCategoryMapper.secondaryCategoryMap"></collection>
+    </resultMap>
+</mapper>

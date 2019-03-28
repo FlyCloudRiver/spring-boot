@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,8 +15,7 @@ import java.util.List;
 
 @Entity
 @ApiModel("商品中级类别")
-public class SecondaryCategory {
-
+public class SecondaryCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +30,42 @@ public class SecondaryCategory {
     /*子级分类*/
     @ApiModelProperty(value = "分类")
     @OneToMany(mappedBy = "secondaryCategory",cascade=CascadeType.ALL,fetch= FetchType.LAZY)
-    private List<Category> CategoryList;
+    private List<Category> categoryList;
 
 
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.REFRESH},optional=false)
     @ApiModelProperty(value = "父级类别")
     private  BigCategory bigCategory;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getSecondaryCategoryName() {
+        return secondaryCategoryName;
+    }
+
+    public void setSecondaryCategoryName(String secondaryCategoryName) {
+        this.secondaryCategoryName = secondaryCategoryName;
+    }
+
+    public List<Category> getCategoryList() {
+        return categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
+    }
+
+    public BigCategory getBigCategory() {
+        return bigCategory;
+    }
+
+    public void setBigCategory(BigCategory bigCategory) {
+        this.bigCategory = bigCategory;
+    }
 }

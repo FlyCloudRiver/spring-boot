@@ -11,6 +11,5 @@
         <result column="goods_number" property="goodsNumber"/>
         <result column="goods_shelf_life" property="goodsShelfLife"/>
         <result column="goods_date" property="goodsDate"/>
-
     </resultMap>
 </mapper>

@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Entity
 @ApiModel("商品大类")
-public class BigCategory {
+public class BigCategory implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +29,29 @@ public class BigCategory {
     /*子级分类*/
     @ApiModelProperty(value = "子分类")
     @OneToMany(mappedBy = "bigCategory",cascade=CascadeType.ALL,fetch= FetchType.LAZY)
-    private List<SecondaryCategory> SecondaryCategoryList;
+    private List<SecondaryCategory> secondaryCategoryList;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBigCategoryName() {
+        return bigCategoryName;
+    }
+
+    public void setBigCategoryName(String bigCategoryName) {
+        this.bigCategoryName = bigCategoryName;
+    }
+
+    public List<SecondaryCategory> getSecondaryCategoryList() {
+        return secondaryCategoryList;
+    }
+
+    public void setSecondaryCategoryList(List<SecondaryCategory> secondaryCategoryList) {
+        this.secondaryCategoryList = secondaryCategoryList;
+    }
 }
