@@ -31,9 +31,9 @@ public class CategoryController {
     }
 
     @ApiOperation(value = "删除分类")
-    @RequestMapping(value = "/delet", method = RequestMethod.POST)
-    public Integer deletCategory(Integer id){
-        return categoryService.deletCategory(id);
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public Integer deleteCategory(Integer id){
+        return categoryService.deleteCategory(id);
     }
 
     @ApiOperation(value = "修改分类")

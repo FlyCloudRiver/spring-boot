@@ -26,8 +26,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Integer deletCategory(Integer id) {
-        return categoryMapper.deletCategory(id);
+    public Integer deleteCategory(Integer id) {
+        return categoryMapper.deleteCategory(id);
     }
 
     @Override

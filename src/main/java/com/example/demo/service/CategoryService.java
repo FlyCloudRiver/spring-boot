@@ -13,7 +13,7 @@ public interface CategoryService {
 
     Integer insertCategory(String categoryName);
 
-    Integer deletCategory(Integer id);
+    Integer deleteCategory(Integer id);
 
     Integer updateCategory(@Param("id")Integer id, @Param("categoryName")String categoryName);
 

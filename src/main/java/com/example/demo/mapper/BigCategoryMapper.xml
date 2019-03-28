@@ -8,4 +8,25 @@
         <result column="big_category_name" property="bigCategoryName"/>
         <collection property="secondaryCategoryList" resultMap="com.example.demo.mapper.SecondaryCategoryMapper.secondaryCategoryMap"></collection>
     </resultMap>
+
+    <insert id="insertBigCategory" parameterType="String">
+        insert into big_category (big_category_name) values (#{bigCategoryName});
+    </insert>
+
+    <delete id="deleteBigCategory" parameterType="Integer">
+        delete from big_category where id=#{id}
+    </delete>
+
+    <update id="updateBigCategory">
+        update category set category_name=#{categoryName} where id=#{id}
+    </update>
+
+    <select id="selectBigCategory"  resultMap="categoryMap">
+    select * from big_category
+
+    <if test="bigCategoryName!=null and bigCategoryName!=''">
+      where big_category_name like "%"#{bigCategoryName}"%"
+    </if>
+
+</select>
 </mapper>
