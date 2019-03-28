@@ -3,7 +3,6 @@ package com.example.demo.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.models.auth.In;
 
 import javax.persistence.*;
 import java.io.Serializable;

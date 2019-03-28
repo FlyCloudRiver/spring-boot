@@ -74,7 +74,7 @@
     </dependencies>
 
     <build>
-        <!--包含mapper xml文件-->
+        <!--包含mapper xml文件  将xml移动到src下面-->
         <resources>
             <resource>
                 <directory>src/main/java</directory>

@@ -11,7 +11,6 @@ import java.util.Date;
 @Entity
 //不与@Table结合的话 表名 默认为 SnakeCaseStrategy(命名策略 )为表名
 @ApiModel("管理员")
-/*管理员*/
 public class Administrator implements Serializable {
 
     @Id

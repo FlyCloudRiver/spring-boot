@@ -14,7 +14,6 @@ import java.util.List;
 
 @Entity
 @ApiModel("商品类别")
-//烟酒，饮料，食品，牛奶，豆制品，粮油，调料，水果，蔬菜，速冻食品，日用百货，家电，散饼干，床上用品，成人用品
 public class Category implements Serializable {
 
 
