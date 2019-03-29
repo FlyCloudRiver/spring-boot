@@ -13,7 +13,7 @@ public interface UserService {
 
 
     /*根据姓名查询用户（模糊查询）*/
-    List<User> selectUserByName(String userName,Integer pageSize,Integer pageNumber);
+    List<User> selectUserByName(String userName);
 
     /*修改用户信息*/
     Integer updateUser(User user);

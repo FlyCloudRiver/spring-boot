@@ -19,7 +19,7 @@ public interface UserMapper {
    /*List<User> findAll(@Param("start")Integer pageSize,@Param("size")Integer pageNumber);*/
 
     /*根据姓名查询用户（模糊查询）*/
-    List<User> selectUserByName(@Param("userName")String userName,@Param("start")Integer pageSize,@Param("size")Integer pageNumber);
+    List<User> selectUserByName(@Param("userName")String userName);
 
     /*更改用户信息*/
     Integer updateUser(User user);
@@ -31,4 +31,6 @@ public interface UserMapper {
     Integer deletUser(Integer userId);
 
     Integer selectUserCount();
+
+    List<User> selectUserPafe();
 }

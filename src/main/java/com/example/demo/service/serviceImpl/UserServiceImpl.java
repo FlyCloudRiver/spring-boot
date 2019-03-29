@@ -30,12 +30,11 @@ public class UserServiceImpl implements UserService {
 
     /*根据姓名查询用户（模糊查询）*/
     @Override
-    public List<User> selectUserByName(String userName,Integer pageSize,Integer pageNumber) {
-        int start=pageSize*(pageNumber-1);
-        int size=pageSize;
+    public List<User> selectUserByName(String userName) {
+
        /* userName="%"+userName+"%";*/
         System.out.println("userName="+userName);
-        return userMapper.selectUserByName(userName,start,size);
+        return userMapper.selectUserByName(userName);
     }
 
     /*修改用户信息*/

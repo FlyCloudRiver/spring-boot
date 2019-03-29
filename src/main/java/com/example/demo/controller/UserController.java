@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 
 import com.example.demo.entity.User;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.UserService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -21,6 +25,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //测试
+    @Autowired
+    private UserMapper userMapper;
+
     /*查询用户条数*/
     @ApiOperation(value = "查询用户数目")
     @RequestMapping(value = "/selectUserCount", method = RequestMethod.GET)
@@ -32,9 +40,11 @@ public class UserController {
     /*查询用户列表*/
     @ApiOperation(value = "根据姓名查询用户列表（userName）")
     @RequestMapping(value = "/selectUserList", method = RequestMethod.POST)
-    public List<User> selectUserByName(String userName,Integer pageSize,Integer pageNumber) {
+    public List<User> selectUserByName(String userName) {
         //调用service层
-        List<User> list = userService.selectUserByName(userName,pageSize,pageNumber);
+        /*分页*/
+        Page page = PageHelper.startPage(1,4);
+        List<User> list = userService.selectUserByName(userName);
         System.out.println(list);
         return list;
     }
@@ -43,6 +53,7 @@ public class UserController {
     @RequestMapping(value = "/selectUserById", method = RequestMethod.GET)
     public User selectUserById(Integer userId) {
         //调用service层
+
         User user = userService.selectUserById(userId);
         return user;
     }
@@ -51,10 +62,10 @@ public class UserController {
 
     @ApiOperation(value = "登录")
     @PostMapping("/login")//@PostMapping是一个组合注解，是@RequestMapping(method = RequestMethod.POST)的缩写。
-    public User loginUser(String userName, String userPassword) {
+    public ResponseEntity<User> loginUser(String userName, String userPassword) {
 
         User user2 = userService.login(userName,userPassword);
-        return user2;
+        return ResponseEntity.ok(user2);
 
     }
 
@@ -77,6 +88,14 @@ public class UserController {
     public Integer deletUser(Integer userId) {
         //调用service层
         return userService.deletUser(userId);
+    }
+
+    /*测试*/
+    @ApiOperation(value = "分页")
+    @RequestMapping(value = "/selectUserPage", method = RequestMethod.GET)
+     public List<User> selectUserPafe(){
+        Page page = PageHelper.startPage(1,3);
+        return userMapper.selectUserPafe();
     }
 
 }

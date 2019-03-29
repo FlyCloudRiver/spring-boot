@@ -39,7 +39,6 @@
         <if test="userName!=null and userName!=''">
             where user_name like "%"#{userName}"%"
         </if>
-        limit #{start},#{size}
     </select>
 
     <!--跟新用户-->
@@ -94,4 +93,8 @@
     <delete id="deletUser" parameterType="Integer">
         delete from user where id = #{id}
     </delete>
+
+    <select id="selectUserPafe" resultMap="userMapper">
+        select * from user
+    </select>
 </mapper>
