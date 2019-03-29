@@ -55,8 +55,5 @@ public class UserServiceImpl implements UserService {
         return userMapper.deletUser(userId);
     }
 
-    @Override
-    public Integer selectUserCount() {
-        return userMapper.selectUserCount();
-    }
+
 }

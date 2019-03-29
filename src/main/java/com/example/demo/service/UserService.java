@@ -24,5 +24,5 @@ public interface UserService {
     /*删除用户*/
     Integer deletUser(Integer userId);
 
-    Integer selectUserCount();
+
 }

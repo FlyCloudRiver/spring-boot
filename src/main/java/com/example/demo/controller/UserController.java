@@ -1,11 +1,12 @@
 package com.example.demo.controller;
 
 
+
 import com.example.demo.entity.User;
-import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.UserService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,35 +26,27 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //测试
-    @Autowired
-    private UserMapper userMapper;
-
-    /*查询用户条数*/
-    @ApiOperation(value = "查询用户数目")
-    @RequestMapping(value = "/selectUserCount", method = RequestMethod.GET)
-    public Integer selectUserCount() {
-        //调用service层
-        Integer count = userService.selectUserCount();
-        return count;
-    }
     /*查询用户列表*/
     @ApiOperation(value = "根据姓名查询用户列表（userName）")
     @RequestMapping(value = "/selectUserList", method = RequestMethod.POST)
-    public List<User> selectUserByName(String userName) {
+    public PageInfo<User> selectUserByName(String userName,Integer pageNum,Integer pageSize) {
         //调用service层
         /*分页*/
-        Page page = PageHelper.startPage(1,4);
+
+        PageHelper.startPage(1,2,"id desc");
         List<User> list = userService.selectUserByName(userName);
-        System.out.println(list);
-        return list;
+        PageInfo<User> info = new PageInfo<>(list);
+        /*System.out.println("总条数"+info.getTotal());
+        System.out.println("总页数"+info.getPages());
+        System.out.println("是否为第一页"+info.isIsFirstPage());*/
+
+        return info;
     }
 
     @ApiOperation(value = "根据ID查询用户")
     @RequestMapping(value = "/selectUserById", method = RequestMethod.GET)
     public User selectUserById(Integer userId) {
         //调用service层
-
         User user = userService.selectUserById(userId);
         return user;
     }
@@ -90,13 +83,6 @@ public class UserController {
         return userService.deletUser(userId);
     }
 
-    /*测试*/
-    @ApiOperation(value = "分页")
-    @RequestMapping(value = "/selectUserPage", method = RequestMethod.GET)
-     public List<User> selectUserPafe(){
-        Page page = PageHelper.startPage(1,3);
-        return userMapper.selectUserPafe();
-    }
 
 }
 

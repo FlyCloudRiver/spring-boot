@@ -1,7 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.User;
 import com.example.demo.service.CategoryService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +47,12 @@ public class CategoryController {
 
     @ApiOperation(value = "查询分类")
     @RequestMapping(value = "/select", method = RequestMethod.POST)
-    List<Category> selectCateGory(String categoryName){
-        return  categoryService.selectCateGory(categoryName);
+    public PageInfo<Category> selectCateGory(String categoryName){
+
+        PageHelper.startPage(1,4,"id desc");
+        List<Category> list=categoryService.selectCateGory(categoryName);
+        PageInfo<Category> info = new PageInfo<>(list);
+        return  info;
     }
 
 }

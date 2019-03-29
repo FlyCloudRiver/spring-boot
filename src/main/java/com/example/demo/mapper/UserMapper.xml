@@ -15,10 +15,7 @@
     </resultMap>
 
 
-    <!--查询用户数目-->
-    <select id="selectUserCount" resultType="Integer">
-        select count(id) from user;
-    </select>
+
     <!--根据ID查找用户-->
     <select id="selectUserById"  resultMap="userMapper" parameterType="Integer">
         SELECT * FROM user WHERE id = #{id}
@@ -28,10 +25,6 @@
     <select id="login" resultMap="userMapper">
         select * from user where user_name=#{name} and user_password=#{password}
     </select>
-    <!--查询所有用户信息-->
-  <!--  <select id="findAll" resultMap="userMapper">
-        select * from user limit #{start},#{size}
-    </select>-->
 
     <!--/*根据姓名查询用户（模糊查询）*/-->
     <select id="selectUserByName" resultMap="userMapper">
@@ -94,7 +87,5 @@
         delete from user where id = #{id}
     </delete>
 
-    <select id="selectUserPafe" resultMap="userMapper">
-        select * from user
-    </select>
+
 </mapper>
